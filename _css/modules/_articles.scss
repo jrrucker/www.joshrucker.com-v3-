@@ -1,0 +1,51 @@
+.article{
+	margin: 2.5em 0em;
+	font-size: 1.2em;
+	line-height: 1.45em;
+}
+
+.article-heading{
+	font-size: 1.66666666666667em;
+	line-height: 1.25em;
+	font-weight: bold;
+	color: $accent-color;
+}
+
+.article h2 a{
+	text-decoration: none;
+}
+
+.article h3{
+	color: #333;
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+
+.article p.article-date{
+	color: #aaa;
+	margin-bottom: 2em;
+	margin-top: .2em;
+	font-size: 0.83333333333333em;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.article p.more{
+	margin-top: 2em;
+	font-style: italic;
+}
+
+.article-date > time {
+    color: #333;
+    font-weight: bold;
+}
+
+blockquote{
+	border-left: 5px solid #eee;
+	padding-left: 2em;
+}
+
+.article p,
+.article ul{
+	margin: 1.5em 0em;
+}

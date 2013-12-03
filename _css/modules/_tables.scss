@@ -1,0 +1,18 @@
+table{
+	margin: 1.5em 0em;
+	width: 100%;
+}
+
+th, td{
+	padding-right: 1em;
+	padding-top: .6em;
+	text-align: left;
+	vertical-align: text-top;
+}
+
+th{
+	border-bottom: 1px solid #eee;
+	margin-bottom: .4em;
+	padding-bottom: .4em;
+	font-weight: bold;
+}

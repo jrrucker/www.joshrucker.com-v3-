@@ -1,0 +1,32 @@
+.main-nav{
+	display: inline-block;
+	padding-left: 1.2em;
+}
+
+.main-nav ul{
+	margin-bottom: 0em;
+}
+
+.main-nav li{
+	display: inline-block;
+}
+
+.main-nav li a{
+	display: block;
+	margin-right: 1em;
+	text-transform: lowercase;
+	font-size: 1.2em;
+	text-decoration: none;
+	color: #aaa;
+	font-style: italic;
+}
+
+.main-nav li a:hover{
+	color: #DE3C00;
+}
+
+.pagination{
+	text-align: center;
+	margin: 3em 0em;
+	font-style: italic;
+}

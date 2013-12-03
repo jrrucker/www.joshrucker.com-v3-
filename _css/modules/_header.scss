@@ -1,0 +1,19 @@
+.heading-branding{
+	display: inline-block;
+}
+
+.heading-branding a{
+	display: inline-block;
+	font-size: 2.2em;
+	text-decoration: none;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.heading-branding a b{
+	color: #333;
+}
+
+.heading-branding a:hover b{
+	color: #DE3C00;
+}

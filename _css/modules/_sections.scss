@@ -1,0 +1,65 @@
+/*****************************************************************************
+ ** Generic section styles for 
+ *****************************************************************************/
+
+.section h2{
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: lowercase;
+	color: #666;
+}
+
+.explainer-text{
+	line-height: 1.4em;
+	margin: 1.5em 0em;
+	color: #666;
+	font-weight: 100;
+}
+
+/*****************************************************************************
+ ** Styles for about section
+ *****************************************************************************/
+
+.about{
+	clear: both;
+	line-height: 1.5em;
+	font-size: 1.2em;
+	margin: 3em 0em;
+	font-style: italic;
+	color: #666;
+}
+
+/*****************************************************************************
+ ** Styles for portfolio section
+ *****************************************************************************/
+
+.portfolio{
+	background: #eee;
+	background: url("../_img/paper.png") repeat fixed;
+	overflow: hidden;
+	padding-top: 3em;
+	border-top: 1px solid rgba(0,0,0,.05);
+}
+
+.portfolio .pagination a{
+	color: #666;
+}
+
+.float-list{
+	overflow: hidden;
+	list-style: none;
+}
+
+.float-list li{
+	float: left;
+	width: 30%;
+	margin-right: 5%;
+}
+
+.float-list li.last{
+	margin-right: 0%;
+}
+
+.float-list li img{
+	max-width: 100%;
+}
