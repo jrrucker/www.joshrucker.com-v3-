@@ -22,8 +22,37 @@
 			
 			<?php the_content(); ?>
 
-			<?php the_tags( "<p><b>Tagged:</b> ", ", ","</p>"); ?>
-
+			<?php if ( 'portfolio' == get_post_type() ){ 
+					
+				$launchDate = get_field('launch');
+				$url = get_field('url');
+				$awards = get_field('awards');
+				
+				if(!empty($launchDate)){
+					$dateStr = date("F Y",strtotime($launchDate));
+					echo "<p><strong>Launched:</strong> $dateStr</p>";
+				}
+				
+				if(!empty($awards)){
+					echo "<p><strong>Awards:</strong> $awards</p>";
+				}
+				
+				if(!empty($url)){
+					echo "<p><strong>Visit Site:</strong> <a href=\"$url\">$url</a></p>";
+				}
+			
+			?>
+			
+			<div class="pagination">
+				<p><a href="<?php echo bloginfo('url'); ?>/portfolio/">&larr; Back to the Portfolio</a></p>
+			</div>
+				
+			<?php } else {
+				
+				the_tags( "<p><b>Tagged:</b> ", ", ","</p>");
+			
+			} ?>
+			
 		<?php else: ?>
 			
 			<?php the_content(); ?>

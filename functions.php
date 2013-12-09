@@ -149,9 +149,9 @@
 		    'show_ui' => true, 
 		    'show_in_menu' => true, 
 		    'query_var' => true,
-		    'rewrite' => array( 'slug' => 'featured-image' ),
+		    'rewrite' => array( 'slug' => 'portfolio' ),
 		    'capability_type' => 'post',
-		    'has_archive' => false, 
+		    'has_archive' => true, 
 		    'hierarchical' => false,
 		    'menu_position' => null,
 		    'supports' => array( 'title', 'editor', 'author', 'excerpt', 'thumbnail', 'comments' )
@@ -167,7 +167,39 @@
     /*****************************************************************************
      ** iii. Custom Taxonomies
 	 *****************************************************************************/
+	
+	function jr_responsibilities_tax() {
+		
+		
+		// Add new taxonomy, make it hierarchical (like categories)
+		$labels = array(
+			'name'              => _x( 'Responsibilities', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Responsibility', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Responsibilities' ),
+			'all_items'         => __( 'All Responsibilities' ),
+			'parent_item'       => __( 'Parent Responsibility' ),
+			'parent_item_colon' => __( 'Parent Responsibility:' ),
+			'edit_item'         => __( 'Edit Responsibility' ),
+			'update_item'       => __( 'Update Responsibility' ),
+			'add_new_item'      => __( 'Add New Responsibility' ),
+			'new_item_name'     => __( 'New Responsibility Name' ),
+			'menu_name'         => __( 'Responsibilities' ),
+		);
 
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'responsibilities' ),
+		);
+
+		register_taxonomy( 'responsibilities', array( 'portfolio' ), $args );
+		
+	}
+	
+	add_action( 'init', 'jr_responsibilities_tax' );
       
       
     /*****************************************************************************
