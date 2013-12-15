@@ -54,12 +54,32 @@
 	float: left;
 	width: 30%;
 	margin-right: 5%;
+	margin-bottom: 2%;
+	overflow: visible;
+}
+
+.float-list li a:hover img{
+	opacity: .9;
 }
 
 .float-list li.last{
 	margin-right: 0%;
 }
 
+.float-list li.first{
+	clear: both;
+}
+
 .float-list li img{
 	max-width: 100%;
+}
+.float-list-title{
+	font-weight: bold;
+	padding-top: .5em;
+	display: block;
+	line-height: 1.3em;
+}
+
+.article .float-list span{
+	font-size: .8em;
 }

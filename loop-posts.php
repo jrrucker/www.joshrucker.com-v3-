@@ -9,30 +9,68 @@
 		<?php if(!is_page()): ?>
 
 			<?php
-				$postDate = get_the_date();
-				$timestamp = strtotime($postDate);
+				
+				if ( 'portfolio' == get_post_type() ){ 
+				
+					$launchDate = get_field('launch');
+					$url = get_field('url');
+					$awards = get_field('awards');
+					
 			?>
-
+			
+			<p class="article-date">
+				Launched on <time datetime="<?php echo date("Y-m-d",strtotime($launchDate)); ?>">
+					<?php echo date("l, F j, Y", strtotime($launchDate)); ?></time>
+			</p>
+			
+			<?php 
+				
+				} else {
+			
+					$postDate = get_the_date();
+					$timestamp = strtotime($postDate);
+			
+			?>
+			
 			<p class="article-date">
 				Published on <time datetime="<?php echo date("Y-m-d",$timestamp); ?>">
 					<?php echo date("l, F j, Y", $timestamp); ?></time>
 			</p>
+			
+			<?php
+					
+				}
+
+			?>
 
 			<?php get_template_part('loop','featimage'); ?>
 			
 			<?php the_content(); ?>
 
 			<?php if ( 'portfolio' == get_post_type() ){ 
+				
+				$terms = get_terms("responsibilities");
+				$count = count($terms);
+				
+				if ( $count > 0 ){
 					
-				$launchDate = get_field('launch');
-				$url = get_field('url');
-				$awards = get_field('awards');
-				
-				if(!empty($launchDate)){
-					$dateStr = date("F Y",strtotime($launchDate));
-					echo "<p><strong>Launched:</strong> $dateStr</p>";
+					echo "<p><strong>Responsibilities:</strong> ";
+					$i = 0;
+					
+				    foreach ( $terms as $term ) {
+						
+						if($i++ > 0){
+							echo ", ";
+						}
+				    	
+						echo "<a href=\"" . get_term_link( $term ) . "\">" . $term->name . "</a>";
+				    
+					}
+				    
+					echo "</p>";
+				 
 				}
-				
+					
 				if(!empty($awards)){
 					echo "<p><strong>Awards:</strong> $awards</p>";
 				}
@@ -68,7 +106,9 @@
 </div>
 
 <?php else: ?>
-	
+
+<article class="article">	
 	<p class="no-posts"><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-	
+</article>
+
 <?php endif; ?>

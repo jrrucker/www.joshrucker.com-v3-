@@ -1,0 +1,26 @@
+/* TEAM */
+	All the Things: Josh Rucker
+	Contact: josh [at] joshrucker.com
+	Twitter: @ifiamblue
+	From: Morrisville, NC
+
+/* THANKS */
+
+	Critique: Shaade Tavares
+	Twitter: @Shaadecita
+	From: Raleigh, NC
+
+	Critique: Josh Mobley
+	Twitter: @joshmobley
+	From: Raleigh, NC
+
+	Critique: James Ryals
+	Twitter: @_JimmyRyals
+	From: Fuquay-Varina, NC
+	
+
+/* SITE */
+	Last update:2013/12/15
+	Language: English
+	Doctype: HTML5
+	IDE: TextMate

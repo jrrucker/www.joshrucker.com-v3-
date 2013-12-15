@@ -1,7 +1,7 @@
 <?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>
-	
-	<article class="article">
 
+	<article class="article">
+		
 		<h2 class="article-heading">
 			<a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
 		</h2>
@@ -32,6 +32,21 @@
 
 <?php else: ?>
 	
-	<p class="no-posts"><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+	<div class="article">
+	
+		<!-- Page title (if applicable) -->	
+		<?php if(is_search()): ?>
+			<h2 class="article-heading">Search results for &ldquo;<?php the_search_query(); ?>:&rdquo;</h2>
+		<?php elseif(is_404()): ?>
+			<h2 class="article-heading">Sorry, this page doesn't exist.</h2>
+		<?php elseif(is_category()): ?>
+			<h2 class="article-heading">Categorized &ldquo;<?php echo single_cat_title( '', false ); ?>:&rdquo;</h2>
+		<?php elseif(is_tag()): ?>
+			<h2 class="article-heading">Tagged &ldquo;<?php echo single_tag_title( '', false ); ?>:&rdquo;</h2>
+		<?php endif; ?>
+	
+		<p class="no-posts"><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+		
+	</div>
 	
 <?php endif; ?>

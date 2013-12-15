@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         
-        <!-- <link type="text/plain" rel="author" href="humans.txt" /> -->
+        <link type="text/plain" rel="author" href="<?php bloginfo('template_url'); ?>/humans.txt" />
 		<meta name="description" content="<?php
 			if(is_single() || is_page()){
 				echo get_the_excerpt();
@@ -23,6 +23,10 @@
 		<!-- Typekit -->
         <script type="text/javascript" src="//use.typekit.net/meg6qsn.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
 		<?php wp_head(); ?>
 
@@ -48,7 +52,7 @@
 								<?php echo $page->post_title; ?>
 								</a></li>
 						<?php endforeach; ?>
-						<li><a href="http://joshrucker.com/work/" target="_blank">Work</a></li>							
+						<li><a href="http://joshrucker.com/portfolio/">Work</a></li>							
 					</ul>
 					
 				</nav>
