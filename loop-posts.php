@@ -76,7 +76,7 @@
 				}
 				
 				if(!empty($url)){
-					echo "<p><strong>Visit Site:</strong> <a href=\"$url\">$url</a></p>";
+					echo "<p><strong>Visit Site:</strong> <a target=\"_blank\" href=\"$url\">$url</a></p>";
 				}
 			
 			?>

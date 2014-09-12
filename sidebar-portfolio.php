@@ -1,4 +1,4 @@
-<section class="section portfolio">
+<aside class="section portfolio">
 	
 	<div class="wrapper">
 		
@@ -68,4 +68,4 @@
 	
 	</div><!-- end .wrapper -->
 	
-</section><!-- end .section -->
+</aside><!-- end .section -->

@@ -39,13 +39,11 @@
 	add_action('wp_head','jr_open_graph');
 	function jr_open_graph(){
 	
-		$site_name = get_bloginfo('name');
-		echo '<meta property="og:site_name" content="'.$site_name.'"/>'.PHP_EOL;
-		
 		if (is_singular()){
-			echo '<meta property="og:title" content="'.get_the_title().'" />'.PHP_EOL;
+			
+			echo '<meta property="og:title" content="'. trim(get_the_title()).'" />'.PHP_EOL;
 			echo '<meta property="og:type" content="article" />'.PHP_EOL;
-			echo '<meta property="og:description" content="' . get_the_excerpt() . '" />'.PHP_EOL;
+			echo '<meta property="og:description" content="' . trim(get_the_excerpt()) . '" />'.PHP_EOL;
 			
 			if(has_post_thumbnail()){
 				
@@ -53,18 +51,32 @@
 					get_post_thumbnail_id(), 
 					array( 720,405 ), false, '' 
 				);
-				echo '<meta property="og:image" content="'. $src[0] .' "/>'.PHP_EOL;
-			
+				echo '<meta property="og:image" content="'. trim($src[0]) .'"/>'.PHP_EOL;
 			}
 			
+			echo '<meta property="og:url" content="'. trim(get_permalink()) .'" />'.PHP_EOL;
+			
 		} else {
+			
+			$path = $_SERVER['REQUEST_URI'];
+			$URI = network_site_url().$path;
+			
+			echo '<meta property="og:title" content="'. trim(get_bloginfo('name')).'" />'.PHP_EOL;
+			echo '<meta property="og:url" content="'. trim($URI) .'" />'.PHP_EOL;
 			echo '<meta property="og:description" content="Josh Rucker writes on web development, life, and things that happen in between." />'.PHP_EOL;
 			echo '<meta property="og:type" content="website" />'.PHP_EOL;
-		}
-		echo '<meta property="og:url" content="'. get_permalink() .'" />'.PHP_EOL;
 		
-	}
+		}
+		
+		$site_name = get_bloginfo('name');
+		echo '<meta property="og:site_name" content="'. trim($site_name).'"/>'.PHP_EOL;
+		
+		// twitter card meta
+		echo '<meta name="twitter:card" content="summary" />'.PHP_EOL;
+		echo '<meta name="twitter:site" content="@ifiamblue" />'.PHP_EOL;
+		echo '<meta name="twitter:creator" content="@ifiamblue" />'.PHP_EOL;
 	
+	}
 	// add page excerpt support pages
     
 	add_action( 'init', function(){
@@ -77,7 +89,24 @@
 		return 100;
 	});
 	
-	add_image_size( 'featured-image', 800, 9999 ); //300 pixels wide (and unlimited height)
+	add_image_size( 'featured-image-2x', 1300, 9999 ); 		// 2x
+	add_image_size( 'featured-image-1-5x', 975, 9999 ); 	// 1.5x
+	add_image_size( 'featured-image', 650, 9999 ); 			// 1x
+
+	// Remove Actions
+	remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
+	remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
+	remove_action('wp_head', 'rsd_link'); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+	remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows Live Writer manifest file.
+	remove_action('wp_head', 'index_rel_link'); // Index link
+	remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Prev link
+	remove_action('wp_head', 'start_post_rel_link', 10, 0); // Start link
+	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // Display relational links for the posts adjacent to the current post.
+	remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+	remove_action('wp_head', 'start_post_rel_link', 10, 0);
+	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+	remove_action('wp_head', 'rel_canonical');
+	remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
     /*****************************************************************************
      ** ii.   Custom Post Types
@@ -251,6 +280,20 @@
 		return $output;
 	}
 	add_shortcode( 'youtube', 'jr_youtube_shortcode' );
+
+	function jr_js_shortcode( $atts, $content = null ) {
+		
+		extract( shortcode_atts( array(
+			'src' => ''
+		), $atts ) );
+
+		if(!empty($src)){
+			return '<script src="' . $src . '"></script>';
+		} 
+		
+		return "";
+	}
+	add_shortcode( 'js', 'jr_js_shortcode' );
 
 	/*
 

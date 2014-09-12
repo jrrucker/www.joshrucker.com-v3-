@@ -1,0 +1,59 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+
+################################################################################################
+### Append trailing slash to url
+################################################################################################
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !example.php
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ http://www.joshrucker.com/$1/ [L,R=301] 
+
+
+################################################################################################
+### Remove index.php from url
+################################################################################################
+
+RewriteEngine On
+RewriteCond %{THE_REQUEST} \/index.php\ HTTP [NC]
+RewriteRule (.*)index.php$ /$1 [R=301,L]
+
+################################################################################################
+### Set header expires attribute  
+################################################################################################
+
+<IfModule mod_expires.c>
+       ExpiresActive On
+       ExpiresDefault "access plus 1 year"
+       ExpiresByType text/html "modification plus 0 seconds"
+</IfModule>
+
+################################################################################################
+### Set entity tags
+################################################################################################
+
+<IfModule mod_headers.c>
+       Header unset ETag
+       FileETag none
+</IfModule>
+
+################################################################################################
+### Enable gzip
+### http://www.anelloconsulting.com/case_study_increasing_yslow_score_30_points_less_one_hour
+################################################################################################
+
+<IfModule mod_deflate.c>
+       AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/xhtml+xml
+</IfModule>

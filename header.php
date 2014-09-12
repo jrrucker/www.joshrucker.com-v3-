@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
 
 	<head>	
 
@@ -7,8 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/_css/main.css" />
 
 		<meta charset="utf-8">
-        <meta content="General" name="rating"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   		<meta content="General" name="rating"/>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         
         <link type="text/plain" rel="author" href="<?php bloginfo('template_url'); ?>/humans.txt" />
@@ -23,7 +22,7 @@
 		<!-- Typekit -->
         <script type="text/javascript" src="//use.typekit.net/meg6qsn.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
+		
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -62,4 +61,3 @@
        	</header><!-- end #header -->
 
 		<?php if(!is_page('about')){ get_sidebar("about"); } ?>
-		<?php //get_sidebar("about"); ?>
